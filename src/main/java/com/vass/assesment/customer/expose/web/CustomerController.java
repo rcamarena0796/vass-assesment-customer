@@ -55,7 +55,7 @@ public class CustomerController {
   /**
    * findById.
    */
-  @ApiOperation(value = "Endpoint used to return all customers")
+  @ApiOperation(value = "Endpoint used to find a customer")
   @GetMapping("/{customerId}")
   public ResponseEntity<CustomerDto> findById(@PathVariable Long customerId) {
     Optional<CustomerDto> existingCustomer = service.findCustomer(customerId);
@@ -72,9 +72,9 @@ public class CustomerController {
     }
   }
 
-  @ApiOperation(value = "Endpoint used to delete a customers")
+  @ApiOperation(value = "Endpoint used to delete a customer")
   @DeleteMapping("")
-  public void deleteProduct(@Valid @RequestBody Customer customer) {
+  public void deleteProduct(@RequestBody Customer customer) {
     service.deleteCustomer(customer);
   }
 
@@ -95,11 +95,11 @@ public class CustomerController {
   }
 
   /**
-   * handleExceptions.
+   * handleNotReadableExceptions.
    */
   @ResponseStatus(HttpStatus.BAD_REQUEST)
   @ExceptionHandler(HttpMessageNotReadableException.class)
-  public String handleExceptions(
+  public String handleNotReadableExceptions(
       HttpMessageNotReadableException ex) {
     return ex.getMessage();
   }
