@@ -2,11 +2,10 @@ package com.vass.assesment.customer.expose.web;
 
 
 import com.vass.assesment.customer.model.Customer;
+import com.vass.assesment.customer.model.dto.CustomerDto;
 import com.vass.assesment.customer.service.CustomerService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -49,14 +48,17 @@ public class CustomerController {
 
   @ApiOperation(value = "Endpoint used to return all customers")
   @GetMapping("findAll")
-  public ResponseEntity<List<Customer>> findAll() {
+  public ResponseEntity<List<CustomerDto>> findAll() {
     return ResponseEntity.ok().body(service.findAll());
   }
 
+  /**
+   * findById.
+   */
   @ApiOperation(value = "Endpoint used to return all customers")
   @GetMapping("/{customerId}")
-  public ResponseEntity<Customer> findById(@PathVariable Long customerId) {
-    Optional<Customer> existingCustomer = service.findCustomer(customerId);
+  public ResponseEntity<CustomerDto> findById(@PathVariable Long customerId) {
+    Optional<CustomerDto> existingCustomer = service.findCustomer(customerId);
     if (!existingCustomer.isPresent()) {
       return ResponseEntity.notFound().build();
     }

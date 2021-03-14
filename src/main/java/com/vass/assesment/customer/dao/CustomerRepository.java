@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerRepository extends MongoRepository<Customer, String> {
 
-  Optional<Customer> findById (Long id);
+  Optional<Customer> findById(Long id);
 
 }

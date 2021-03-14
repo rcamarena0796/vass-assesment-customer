@@ -26,15 +26,15 @@ public class Customer {
   @NotNull(message = "id field is mandatory")
   private Long id;
 
-  @Pattern(regexp="^(0|[1-9][0-9]*)$", message="Invalid numDoc!")
+  @Pattern(regexp = "^(0|[1-9][0-9]*)$", message = "Invalid numDoc!")
   @NotBlank(message = "name field is mandatory")
   private String numDoc;
 
   @NotBlank(message = "docType field is mandatory")
-  @Pattern(regexp="^[a-zA-Z\\s]*$", message="Invalid docType!")
+  @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Invalid docType!")
   private String docType;
 
-  @Pattern(regexp="^[a-zA-Z\\s]*$", message="Invalid fullName!")
+  @Pattern(regexp = "^[a-zA-Z\\s]*$", message = "Invalid fullName!")
   @NotBlank(message = "fullName field is mandatory")
   private String fullName;
 
